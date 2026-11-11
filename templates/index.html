@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentAI | Resume Screening</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="top-header">
+        <div class="brand">
+            <div class="brand-icon">T</div>
+            <div>
+                <h2>TalentAI</h2>
+                <p>Intelligent Recruitment Platform</p>
+            </div>
+        </div>
+        <div class="header-status">
+            <span class="status-dot"></span>
+            AI Screening System
+        </div>
+    </header>
+    <main class="container">
+        <section class="hero">
+            <div class="hero-badge">
+                ✨ AI-Powered Resume Screening
+            </div>
+            <h1>
+                Find the right candidate,
+                <span>faster.</span>
+            </h1>
+            <p>
+                Analyze resumes automatically, compare candidate profiles,
+                calculate ATS compatibility and rank the strongest applicants.
+            </p>
+        </section>
+        <section class="screening-panel">
+            <div class="input-card">
+                <div class="card-heading">
+                    <div class="heading-icon blue">
+                        💼
+                    </div>
+                    <div>
+                        <h3>Job Vacancy</h3>
+                        <p>Enter the position you are hiring for</p>
+                    </div>
+                </div>
+                <label for="job_role">
+                    Job Role
+                </label>
+                <div class="input-wrapper">
+                    <span>🔎</span>
+                    <input
+                        type="text"
+                        id="job_role"
+                        name="job_role"
+                        placeholder="e.g. Java Developer"
+                        autocomplete="off"
+                    >
+                </div>
+                <div class="input-hint">
+                    <span>●</span>
+                    AI will compare resumes against the selected role.
+                </div>
+            </div>
+            <form id="screeningForm"
+                  enctype="multipart/form-data">
+                <div class="input-card upload-card">
+                    <div class="card-heading">
+                        <div class="heading-icon purple">
+                            📄
+                        </div>
+                        <div>
+                            <h3>Candidate Resumes</h3>
+                            <p>Upload resumes for AI-powered screening</p>
+                        </div>
+                    </div>
+                    <label class="upload-area"
+                           for="resumes">
+                        <div class="upload-icon">
+                            ☁
+                        </div>
+                        <h3>
+                            Upload candidate resumes
+                        </h3>
+                        <p>
+                            Click here to browse PDF or DOCX files
+                        </p>
+                        <span class="browse-button">
+                            Select Resumes
+                        </span>
+                        <input
+                            type="file"
+                            id="resumes"
+                            name="resumes"
+                            accept=".pdf,.docx"
+                            multiple
+                            hidden
+                        >
+                    </label>
+                    <div id="selectedFiles"
+                         class="selected-files">
+                    </div>
+                    <button
+                        type="submit"
+                        id="analyzeBtn"
+                        class="analyze-button">
+                        <span>⚡</span>
+                        Analyze Candidates
+                        <span class="arrow">
+                            →
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </section>
+        <section id="loading"
+                 class="loading-section"
+                 style="display:none;">
+            <div class="loading-card">
+                <div class="loader"></div>
+                <h3>
+                    AI is analyzing candidates...
+                </h3>
+                <p>
+                    Extracting resume information, comparing skills
+                    and calculating candidate scores.
+                </p>
+            </div>
+        </section>
+        <section id="resultsSection"
+                 class="results-section"
+                 style="display:none;">
+            <div class="results-header">
+                <div>
+                    <div class="results-badge">
+                        ✓ Analysis Complete
+                    </div>
+                    <h2>
+                        Candidate Ranking
+                    </h2>
+                    <p>
+                        Candidates ranked according to their overall
+                        compatibility with the vacancy.
+                    </p>
+                </div>
+            </div>
+            <div id="results"
+                 class="results-container">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div>
+                <strong>TalentAI</strong>
+                <span>AI Resume Screening System</span>
+            </div>
+            <div>
+                Powered by NLP & AI
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
